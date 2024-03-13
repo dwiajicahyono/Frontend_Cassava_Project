@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const ProductList = () => {
+  const { user } = useSelector((state) => state.auth);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -21,41 +23,82 @@ const ProductList = () => {
 
   return (
     <div>
-      <h1 className="title">Products</h1>
-      <h2 className="subtitle">List of Products</h2>
-      <Link to="/products/add" className="button is-primary mb-2">
-        Add New
-      </Link>
+      <h1 className="title">Order Panen</h1>
+      <h2 className="subtitle">Order Panenan</h2>
+      {user && (user.role === "petani" || user.role === "admin") && (
+        <Link to="/products/add" className="button is-primary mb-2">
+          Add Order Panen
+        </Link>
+      )}
+
       <table className="table is-striped is-fullwidth">
         <thead>
           <tr>
             <th>No</th>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Created By</th>
-            <th>Actions</th>
+            <th>Nama petani</th>
+            <th>varietas</th>
+            <th>Status Order</th>
+            <th>Tanggal Panen</th>
+            <th>Estimasi Berat(kg)</th>
+            <th>Harga</th>
+            <th>Kode Blokchain</th>
+            {user && (user.role === "pabrik" || user.role === "admin" || user.role === "logistik") && (
+              <th>Actions</th>
+            )}
           </tr>
         </thead>
         <tbody>
           {products.map((product, index) => (
             <tr key={product.uuid}>
               <td>{index + 1}</td>
-              <td>{product.name}</td>
-              <td>{product.price}</td>
               <td>{product.user.name}</td>
+              <td>{product.varietasSingkong}</td>
+              <td>{product.statusOrder}</td>
+              <td>{product.tanggalPemanenan}</td>
+              <td>{product.estimasiBerat}</td>
+              <td>Rp. {product.estimasiHarga}</td>
+              <td>{product.uuid}</td>
               <td>
-                <Link
-                  to={`/products/edit/${product.uuid}`}
-                  className="button is-small is-info"
-                >
-                  Edit
-                </Link>
-                <button
-                  onClick={() => deleteProduct(product.uuid)}
-                  className="button is-small is-danger"
-                >
-                  Delete
-                </button>
+                {user && (user.role === "admin") && (
+                  <div>
+                    <Link
+                      to={`/products/edit/${product.uuid}`}
+                      className="button is-small is-info"
+                    >
+                      Edit
+                    </Link>
+                    <button
+                      onClick={() => deleteProduct(product.uuid)}
+                      className="button is-small is-danger"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                )}
+                {user && (product.namaPerusahaan === null || product.namaPerusahaan === "") && (user.role === "pabrik") && (
+                  <Link
+                    to={`/products/acc/${product.uuid}`}
+                    className="button is-small is-primary"
+                  >
+                    Terima Order
+                  </Link>
+                )}
+                {user && (product.namaLogistik === null || product.namaLogistik === "") && (user.role === "logistik") && (
+                  <Link
+                    to={`/products/acc/${product.uuid}`}
+                    className="button is-small is-primary"
+                  >
+                    Terima Order
+                  </Link>
+                )}
+                {user && (user.role === "admin") && (
+                  <Link
+                    to={`/products/acc/${product.uuid}`}
+                    className="button is-small is-primary"
+                  >
+                    Terima Order
+                  </Link>
+                )}
               </td>
             </tr>
           ))}

@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { IoPerson, IoPricetag, IoHome, IoLogOut, IoBusiness, IoFastFood, IoAirplane } from "react-icons/io5";
+import { IoPerson, IoHome, IoLogOut, IoBusiness, IoFastFood, IoAirplane, IoBagHandle } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { LogOut, reset } from "../features/authSlice";
 
@@ -27,7 +27,7 @@ const Sidebar = () => {
           </li>
           <li>
             <NavLink to={"/products"}>
-              <IoPricetag /> Products
+              <IoBagHandle /> Panen
             </NavLink>
           </li>
         </ul>

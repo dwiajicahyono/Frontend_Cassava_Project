@@ -4,6 +4,7 @@ import Welcome from "../components/Welcome";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getMe } from "../features/authSlice";
+import NotificationOrder from "../components/NotificationOrder";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const Dashboard = () => {
   return (
     <Layout>
       <Welcome />
+      <NotificationOrder />
     </Layout>
   );
 };

@@ -33,6 +33,7 @@ const Userlist = () => {
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>
+            <th>Kode Blokchain</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -43,6 +44,7 @@ const Userlist = () => {
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>{user.role}</td>
+              <td>{user.uuid}</td>
               <td>
                 <Link
                   to={`/users/edit/${user.uuid}`}
