@@ -47,6 +47,15 @@ const Sidebar = () => {
         )}
         <div>
           <p className="menu-label">Data-data</p>
+          {user && (user.role === "pabrik") && (
+            <ul className="menu-list">
+              <li>
+                <NavLink to={"/datapabrik"}>
+                  <IoPerson /> Profile Pabrik
+                </NavLink>
+              </li>
+            </ul>
+          )}
           {user && (user.role === "admin" || user.role === "pabrik") && (
             <ul className="menu-list">
               <li>
@@ -55,13 +64,31 @@ const Sidebar = () => {
                 </NavLink>
               </li>
             </ul>
+          )}
+          {user && (user.role === "petani") && (
+            <ul className="menu-list">
+              <li>
+                <NavLink to={"/datapetani"}>
+                  <IoPerson /> Profile Petani
+                </NavLink>
+              </li>
 
+            </ul>
           )}
           {user && (user.role === "admin" || user.role === "petani") && (
             <ul className="menu-list">
               <li>
-                <NavLink to={"/"}>
+                <NavLink to={"/datalahan"}>
                   <IoFastFood /> Data Petani
+                </NavLink>
+              </li>
+            </ul>
+          )}
+          {user && (user.role === "logistik") && (
+            <ul className="menu-list">
+              <li>
+                <NavLink to={"/datalogistik"}>
+                  <IoPerson /> Profile Logistik
                 </NavLink>
               </li>
             </ul>

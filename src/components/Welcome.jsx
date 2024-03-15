@@ -37,13 +37,13 @@ const Welcome = () => {
       )}
 
       <h2 className="subtitle">
-        Anda Login Sebagai <strong>{user && user.role}</strong>
+        Role Anda: <strong>{user && user.role}</strong>
       </h2>
       <h2 className="subtitle">
-        Anda Login Sebagai <strong>{user && user.uuid}</strong>
+        ID Blokchain Anda: <strong>{user && user.uuid}</strong>
       </h2>
       <h2 className="subtitle">
-        Anda Login Sebagai <strong>{user && user.email}</strong>
+        Email Anda: <strong>{user && user.email}</strong>
       </h2>
 
 

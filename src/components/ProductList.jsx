@@ -18,7 +18,7 @@ const ProductList = () => {
 
   const deleteProduct = async (productId) => {
     await axios.delete(`http://localhost:5000/products/${productId}`);
-    getProducts();
+    getProducts(); // Refresh the products list after deletion
   };
 
   return (
@@ -36,12 +36,12 @@ const ProductList = () => {
           <tr>
             <th>No</th>
             <th>Nama petani</th>
-            <th>varietas</th>
+            <th>Varietas</th>
             <th>Status Order</th>
             <th>Tanggal Panen</th>
             <th>Estimasi Berat(kg)</th>
             <th>Harga</th>
-            <th>Kode Blokchain</th>
+            <th>Kode Blockchain</th>
             {user && (user.role === "pabrik" || user.role === "admin" || user.role === "logistik") && (
               <th>Actions</th>
             )}
@@ -51,13 +51,14 @@ const ProductList = () => {
           {products.map((product, index) => (
             <tr key={product.uuid}>
               <td>{index + 1}</td>
-              <td>{product.user.name}</td>
+              <td>{product.user?.name || 'No Name'}</td>
               <td>{product.varietasSingkong}</td>
               <td>{product.statusOrder}</td>
               <td>{product.tanggalPemanenan}</td>
               <td>{product.estimasiBerat}</td>
               <td>Rp. {product.estimasiHarga}</td>
               <td>{product.uuid}</td>
+
               <td>
                 {user && (user.role === "admin") && (
                   <div>
@@ -100,6 +101,7 @@ const ProductList = () => {
                   </Link>
                 )}
               </td>
+
             </tr>
           ))}
         </tbody>
