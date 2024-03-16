@@ -59,7 +59,7 @@ const Sidebar = () => {
           {user && (user.role === "admin" || user.role === "pabrik") && (
             <ul className="menu-list">
               <li>
-                <NavLink to={"/"}>
+                <NavLink to={"/data-pabrik"}>
                   <IoBusiness /> Data Pabrik
                 </NavLink>
               </li>
@@ -97,7 +97,7 @@ const Sidebar = () => {
           {user && (user.role === "admin" || user.role === "logistik") && (
             <ul className="menu-list">
               <li>
-                <NavLink to={"/"}>
+                <NavLink to={"/data-logistik"}>
                   <IoAirplane /> Data Logistik
                 </NavLink>
               </li>
