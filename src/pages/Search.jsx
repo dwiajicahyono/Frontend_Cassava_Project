@@ -31,7 +31,7 @@ const Search = () => {
     const renderResultItem = (result) => {
         // Daftar properti yang mungkin ada dari berbagai model
         const properties = [
-            'uuid', 'name', 'email', 'role', 'nohp', 'alamat', 'foto', 'url', 'password', // Properties from Users model
+            'uuid', 'name', 'email', 'role', 'nohp', 'alamat', 'foto', 'url',  // Properties from Users model
             'idPengiriman', 'tanggalWaktuPengiriman', 'asal', 'tujuan', 'estimasiWaktuTiba', 'nomorPolisiKendaraan', 'jenisKendaraan', 'kapasitasAngkut', 'biayaTransportasi', 'catatanEfisiensiRute', 'kondisiPengiriman', 'catatanDariPenerima', // Properties from Logistik model
             'tanggalPenerimaan', 'beratTotalDiterima', 'evaluasiKualitas', 'catatanKualitas', 'kapasitasProduksi', 'produksiHarianTapioka', 'kualitasOutput', 'permasalahanOperasional', 'kebutuhanPerbaikan', // Properties from Pabrik model
             'idlahan', 'lokasilahan', 'luaslahan', 'statuskepemilikanlahan', 'periodeTanamMulai', 'periodeTanamSelesai', 'varietassingkong', 'estimasiproduksi', 'produksiaktual', 'catatantambahan', 'jenispupuk', 'jumlahpupuk', 'hargajual', 'totalpendapatan', 'pendapatanbersih',  // Properties from Petani model

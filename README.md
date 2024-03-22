@@ -11,11 +11,24 @@
 
 1. Datalahan
 2. Data-logistik
-   useEffect(() => {
-   if (isError) {
-   navigate("/");
-   }
-   if (user && (user.role !== "admin" && user.role !== "petani")) {
-   navigate("/dashboard");
-   }
-   }, [isError, user, navigate]);
+
+logistik :
+LGS-tvzXxD
+pabrik :
+PBK-FcFDXw
+petani:
+LHN-19Spfa
+order pemanenan:
+ORD-30Xd96
+
+user logistik:
+USR-FVeWpl
+
+pabrik user:
+USR-HIuUZ6
+
+petani user:
+USR-vJzF8p
+
+admin:
+USR-SVIKRS
